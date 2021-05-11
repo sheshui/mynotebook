@@ -1,6 +1,8 @@
 package org.sheshui.mynotebook;
 
 /**
+ * 函数接口声明
+ * 函数接口只有一个未实现的方法
  * @author sunjiarui
  */
 @FunctionalInterface
