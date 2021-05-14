@@ -4,3 +4,8 @@ server:
 spring:
   profiles:
     active: dev,release
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://81.70.14.217:13306/note
+    username: root
+    password: mysqlondocker
