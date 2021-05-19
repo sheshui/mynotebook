@@ -1,9 +1,28 @@
 package org.shehsui.mynotebook.api
 
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.shehsui.mynotebook.entity.NoteEntity
+import org.shehsui.mynotebook.service.NotebookService
+import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping()
-class NotebookController {
+@RequestMapping("/note")
+class NotebookController(
+    val noteService: NotebookService
+) {
+
+    @PostMapping("/body")
+    fun getBody(@RequestBody x: Any, @RequestBody y: Any): Unit {
+        println(x.toString())
+        println(y.toString())
+    }
+
+    @GetMapping
+    fun getAll(): List<NoteEntity?> {
+        return noteService.getNoteList()
+    }
+
+    @PostMapping
+    fun save(@RequestBody note: NoteEntity?): NoteEntity {
+        return noteService.saveNote(note)
+    }
 }

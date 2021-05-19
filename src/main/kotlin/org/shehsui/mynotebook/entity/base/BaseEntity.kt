@@ -5,16 +5,17 @@ import java.util.*
 import javax.persistence.*
 
 @MappedSuperclass
-open class BaseEntity(
+open class BaseEntity {
+    @Column(name = "create_time")
+    @Temporal(TemporalType.TIMESTAMP)
+    private var createTime: Date? = null
 
-    @Column(name = "create_time") @Temporal(TemporalType.TIMESTAMP) var createTime: Date?,
-
-    @Column(name = "update_time") @Temporal(TemporalType.TIMESTAMP) var updateTime: Date?
-) {
-    constructor() : this(null, null)
+    @Column(name = "update_time")
+    @Temporal(TemporalType.TIMESTAMP)
+    private var updateTime: Date? = null
 
     @PrePersist
-    fun prePersist(): Unit {
+    open fun prePersist(): Unit {
         val now = DateUtils.now()
         if (createTime == null) {
             createTime = now

@@ -9,3 +9,7 @@ spring:
     url: jdbc:mysql://81.70.14.217:13306/note
     username: root
     password: mysqlondocker
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
